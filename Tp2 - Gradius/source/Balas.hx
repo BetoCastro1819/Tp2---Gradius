@@ -14,7 +14,7 @@ class Balas extends FlxSprite
 	{
 		super(X, Y);
 		
-		makeGraphic(10, 10, 0xffffffff);
+		makeGraphic(2, 2, 0xfffb2e01);
 		velocity.x = 200;
 	}
 
@@ -22,7 +22,13 @@ class Balas extends FlxSprite
 	{
 		super.update(elapsed);
 		
-		if (x < FlxG.camera.x || x > FlxG.camera.width)
+		//borderCheck();
+	}
+	
+	//Ver que carajo pasa
+	public function borderCheck():Void
+	{
+		if (x < FlxG.camera.x || x > FlxG.camera.x + FlxG.camera.width)
 		{
 			kill();
 			trace("la bala murio");

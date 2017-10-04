@@ -13,7 +13,7 @@ class PlayState extends FlxState
 		
 		var background:FlxBackdrop = new FlxBackdrop(AssetPaths.Fondo__png);
 		
-		var p:Player = new Player(200, 200);
+		var p:Player = new Player(FlxG.camera.x + FlxG.camera.width / 4, FlxG.camera.y + FlxG.camera.height / 2);
 		
 		var guia:FlxSprite = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		guia.makeGraphic(1, 1, 0x00000000);

@@ -34,7 +34,7 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("assets/images/Fondo.jpg");
+		urls.push ("assets/images/Fondo.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -135,7 +135,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "7",
+			build: "65",
 			company: "Beto",
 			file: "Tp2-Gradius",
 			fps: 60,
@@ -153,13 +153,13 @@ class ApplicationMain {
 					display: 0,
 					fullscreen: false,
 					hardware: false,
-					height: 480,
+					height: 240,
 					parameters: "{}",
 					resizable: false,
 					stencilBuffer: true,
 					title: "Tp2 - Gradius",
 					vsync: true,
-					width: 640,
+					width: 256,
 					x: null,
 					y: null
 				},
@@ -177,7 +177,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 640, 480, "000000");
+		openfl.Lib.embed (null, 256, 240, "000000");
 		#end
 		#else
 		create ();
