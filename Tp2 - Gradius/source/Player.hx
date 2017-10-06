@@ -13,15 +13,15 @@ class Player extends FlxSprite
 	private var speed:Int;
 	private var bullet:Balas;
 	
-	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0,?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		
-		x -= width / 2;
+		
+		x -= width / 2; 
 		y -= height / 2;
 		
 		speed = 128;
-		makeGraphic(16, 16, 0xfffb2e01);
 	}
 	
 	override public function update(elapsed:Float):Void 
