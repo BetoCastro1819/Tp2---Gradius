@@ -16,12 +16,10 @@ class AssetData {
 		
 		if (!initialized) {
 			
-			path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
-			type.set ("assets/data/data-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
-			path.set ("assets/data/Gradius.oel", "assets/data/Gradius.oel");
-			type.set ("assets/data/Gradius.oel", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/data/Gradius.oep", "assets/data/Gradius.oep");
 			type.set ("assets/data/Gradius.oep", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/data/GradiusOld.oel", "assets/data/GradiusOld.oel");
+			type.set ("assets/data/GradiusOld.oel", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/images/Boss.png", "assets/images/Boss.png");
 			type.set ("assets/images/Boss.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/Fondo.png", "assets/images/Fondo.png");

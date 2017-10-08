@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <OgmoVersion>2.1.0.6</OgmoVersion>
-  <Name>New Project</Name>
+  <Name>GradiusOld</Name>
   <BackgroundColor A="255" R="125" G="160" B="255" />
   <GridColor A="255" R="255" G="240" B="90" />
   <LevelDefaultSize>
@@ -16,7 +16,7 @@
     <Width>5120</Width>
     <Height>240</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\51\Desktop\Nueva carpeta (4)\Gradius.oep</Filename>
+  <Filename>A:\Beto\Documents\Image Campus\Materias 1er Año\2do Cuatrimestre\Desarrollo de Videojuegos 1\Tp2---Gradius\Tp2 - Gradius\assets\data\Gradius.oep</Filename>
   <AngleMode>Radians</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -66,7 +66,7 @@
   <Tilesets>
     <Tileset>
       <Name>tiles</Name>
-      <FilePath>tiles4.png</FilePath>
+      <FilePath>..\images\tiles.png</FilePath>
       <TileSize>
         <Width>16</Width>
         <Height>16</Height>
@@ -84,7 +84,7 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="nave.png" Tiled="false">
+      <ImageDefinition DrawMode="Image" ImagePath="..\images\nave.png" Tiled="false">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />
@@ -99,7 +99,7 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="nave_enemiga1.png" Tiled="false">
+      <ImageDefinition DrawMode="Image" ImagePath="..\images\nave_enemiga1.png" Tiled="false">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />
@@ -114,7 +114,7 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="nave_enemiga2.png" Tiled="false">
+      <ImageDefinition DrawMode="Image" ImagePath="..\images\nave_enemiga2.png" Tiled="false">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />
@@ -129,7 +129,7 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="nave_enemiga3.png" Tiled="false">
+      <ImageDefinition DrawMode="Image" ImagePath="..\images\nave_enemiga3.png" Tiled="false">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />
@@ -144,7 +144,7 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="Boss.png" Tiled="false">
+      <ImageDefinition DrawMode="Image" ImagePath="..\images\Boss.png" Tiled="false">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />

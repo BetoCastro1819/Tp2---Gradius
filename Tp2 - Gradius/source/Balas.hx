@@ -22,16 +22,15 @@ class Balas extends FlxSprite
 	{
 		super.update(elapsed);
 		
-		//borderCheck();
+		borderCheck();
 	}
 	
 	//Ver que carajo pasa
 	public function borderCheck():Void
 	{
-		if (x < FlxG.camera.x || x > FlxG.camera.x + FlxG.camera.width)
+		if (x < FlxG.camera.scroll.x || x > (FlxG.camera.scroll.x + FlxG.camera.width) - width)
 		{
-			kill();
-			trace("la bala murio");
+			kill();			
 		}
 	}
 }
