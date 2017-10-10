@@ -21,6 +21,9 @@ class PlayState extends FlxState
 	private var arrayLives:FlxTypedGroup<FlxSprite>;
 	private var spriteLife:FlxSprite;
 	private var respawnDelay:Float = 0;
+	private var boss:Boss;
+	var camVelocityX:Float;
+	var guia:FlxSprite;
 	
 	override public function create():Void
 	{
@@ -40,6 +43,8 @@ class PlayState extends FlxState
 			arrayLives.add(spriteLife);
 		}
 		
+		boss = new Boss();
+		
 		allEnemiesGroup = new FlxGroup();
 		enemyGroup1 = new FlxTypedGroup<BadGuy_1>();
 		enemyGroup2 = new FlxTypedGroup<BadGuy_2>();
@@ -54,17 +59,19 @@ class PlayState extends FlxState
 		tilemap.setTileProperties(4, FlxObject.ANY);
 		tilemap.setTileProperties(5, FlxObject.ANY);
 		loader.loadEntities(placeEntities, "entities");
-		
+		var boss = new Boss(5026, 15, AssetPaths.Boss__png);
 		allEnemiesGroup.add(enemyGroup1);
 		allEnemiesGroup.add(enemyGroup2);
 		allEnemiesGroup.add(enemyGroup3);		
 		
 		var background:FlxBackdrop = new FlxBackdrop(AssetPaths.Fondo__png);
 		
-		var guia:FlxSprite = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
+		guia = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		guia.makeGraphic(1, 1, 0x00000000);
-		guia.velocity.x = Reg.camVelocityX;
+		guia.velocity.x = Reg.camVelocityX;		
 		FlxG.camera.follow(guia);
+		
+		
 		
 		add(guia);
 		add(background);
@@ -72,6 +79,9 @@ class PlayState extends FlxState
 		add(player);
 		add(allEnemiesGroup);
 		add(arrayLives);
+		add(boss);
+		
+		
 	}
 
 	override public function update(elapsed:Float):Void
@@ -79,6 +89,12 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		
 		colisiones();
+		//trace(guia.x);
+		if (guia.x > 4992)
+		{
+			guia.x = 4992;
+			guia.velocity.x = 0;
+		}
 		
 		if (!player.alive && Global.lives >= 0)
 		{
@@ -96,6 +112,7 @@ class PlayState extends FlxState
 		FlxG.collide(tilemap, player, playerTilemapColision);
 		FlxG.collide(allEnemiesGroup, player, playerEnemyColision);
 		FlxG.collide(tilemap, player.bullet, playerBulletTilemapColision);
+		
 	}
 	
 	private function playerBulletTilemapColision(tile:FlxTilemap, bullet:Balas):Void
@@ -103,6 +120,7 @@ class PlayState extends FlxState
 		if (bullet.alive)
 			bullet.kill();
 	}
+	
 	
 	private function playerEnemyColision(e:FlxSprite, p:Player):Void
 	{
@@ -136,6 +154,9 @@ class PlayState extends FlxState
 			case "Enemigo3":
 				var badGuy_3 = new BadGuy_3(X, Y, AssetPaths.nave_enemiga3__png);
 				enemyGroup3.add(badGuy_3);
+			case "Boss":
+                var boss = new Boss(X, Y, AssetPaths.Boss__png);
+                add(boss);
 		}
 	}
 	

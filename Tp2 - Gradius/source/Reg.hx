@@ -6,5 +6,9 @@ package;
  */
 class Reg 
 {
-	inline static public var camVelocityX:Float = 50;	
+	inline static public var camVelocityX:Float = 500;	
+	
+	
+
+	
 }
