@@ -15,14 +15,14 @@ class BadGuy_2 extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		//velocity.x = -100;
-		//loadGraphic(AssetPaths.nave_enemiga2__png);
-		
 	}
 	
 	override public function update(elapsed:Float):Void
 	{
-		BadGuy_2Movement();
+		if (x < FlxG.camera.scroll.x + FlxG.camera.width)
+		{
+			BadGuy_2Movement();
+		}
 	}
 	
 	public function BadGuy_2Movement()
