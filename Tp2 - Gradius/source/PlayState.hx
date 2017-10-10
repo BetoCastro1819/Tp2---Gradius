@@ -126,8 +126,7 @@ class PlayState extends FlxState
 		switch (entityName)
 		{
 			case "personaje":
-				player = new Player(X, Y, AssetPaths.nave__png);			
-				//add(player);
+				player = new Player(X, Y, AssetPaths.nave__png);
 			case "Enemigo1":
 				var badGuy_1 = new BadGuy_1(X, Y, AssetPaths.nave_enemiga1__png);
 				enemyGroup1.add(badGuy_1);
@@ -137,7 +136,6 @@ class PlayState extends FlxState
 			case "Enemigo3":
 				var badGuy_3 = new BadGuy_3(X, Y, AssetPaths.nave_enemiga3__png);
 				enemyGroup3.add(badGuy_3);
-				//add(enemyGroup);
 		}
 	}
 	

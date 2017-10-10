@@ -515,7 +515,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "395",
+			build: "410",
 			company: "Beto",
 			file: "Tp2-Gradius",
 			fps: 60,
