@@ -19,25 +19,28 @@ class BadGuy_3 extends FlxSprite
 	
 	override public function update(elapsed:Float):Void
 	{
-		BadGuy_3Movement();
+		if (x < FlxG.camera.scroll.x + FlxG.camera.width)
+		{
+			BadGuy_3Movement();
+		}
 	}
 	
 	public function BadGuy_3Movement()
     {
         timer += 1;
-        if (timer > 0 && timer < 25)
+        if (timer > 0)
         {
             x -= 2;
         }
-        if (timer > 25 && timer < 50)
+        else if (timer > 25)
         {
             x -= 3;
         }
-        if (timer > 75 && timer < 100)
+        else if (timer > 75)
         {
             x -= 4;
         }
-        if (timer > 100)
+        else if (timer > 100)
         {
             x -= 5;
         }

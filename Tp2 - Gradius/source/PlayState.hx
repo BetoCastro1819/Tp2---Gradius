@@ -112,7 +112,7 @@ class PlayState extends FlxState
 		FlxG.collide(tilemap, player, playerTilemapColision);
 		FlxG.collide(allEnemiesGroup, player, playerEnemyColision);
 		FlxG.collide(tilemap, player.bullet, playerBulletTilemapColision);
-		
+		FlxG.collide(allEnemiesGroup, player.bullet, playerBulletEnemy);
 	}
 	
 	private function playerBulletTilemapColision(tile:FlxTilemap, bullet:Balas):Void
@@ -121,6 +121,11 @@ class PlayState extends FlxState
 			bullet.kill();
 	}
 	
+	private function playerBulletEnemy(b: Balas, e:FlxSprite)
+	{
+		b.kill();
+		e.kill();
+	}
 	
 	private function playerEnemyColision(e:FlxSprite, p:Player):Void
 	{
