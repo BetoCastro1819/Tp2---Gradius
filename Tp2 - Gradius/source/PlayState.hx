@@ -21,10 +21,12 @@ class PlayState extends FlxState
 	private var arrayLives:FlxTypedGroup<FlxSprite>;
 	private var spriteLife:FlxSprite;
 	private var respawnDelay:Float = 0;
+	private var acum:Int = 0;	
 	private var boss:Boss;
 	private var cajita:Cajita;
 	var camVelocityX:Float;
 	var guia:FlxSprite;
+	
 	
 	override public function create():Void
 	{
@@ -71,7 +73,20 @@ class PlayState extends FlxState
 		guia = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		guia.makeGraphic(1, 1, 0x00000000);
 		guia.velocity.x = Reg.camVelocityX;		
-		FlxG.camera.follow(guia);		
+		FlxG.camera.follow(guia);
+		
+		var cajOption = new FlxSprite(227,227);
+		var cajOption2 = new FlxSprite(214, 227);
+		var cajOption3 = new FlxSprite(201, 227);
+		var cajOption4 = new FlxSprite(188, 227);
+		cajOption.makeGraphic(8, 8, 0xffffffff);
+		cajOption2.makeGraphic(8,8, 0xffffffff);
+		cajOption3.makeGraphic(8,8, 0xffffffff);
+		cajOption4.makeGraphic(8, 8, 0xffffffff);
+		cajOption.velocity.x = Reg.camVelocityX;
+		cajOption2.velocity.x = Reg.camVelocityX;
+		cajOption3.velocity.x = Reg.camVelocityX;
+		cajOption4.velocity.x = Reg.camVelocityX;
 		
 		add(guia);
 		add(background);
@@ -79,8 +94,11 @@ class PlayState extends FlxState
 		add(player);
 		add(allEnemiesGroup);
 		add(arrayLives);
-		add(boss);	
-		
+		add(boss);
+		add(cajOption);
+		add(cajOption2);
+		add(cajOption3);
+		add(cajOption4);
 	}
 
 	override public function update(elapsed:Float):Void
@@ -112,6 +130,13 @@ class PlayState extends FlxState
 		FlxG.collide(allEnemiesGroup, player, playerEnemyColision);
 		FlxG.collide(tilemap, player.bullet, playerBulletTilemapColision);
 		FlxG.collide(allEnemiesGroup, player.bullet, playerBulletEnemy);
+		FlxG.collide(cajita, player, playerCajitaColision);
+	}
+	
+	function playerCajitaColision(c:Cajita, p:Player):Void 
+	{
+		trace("culo");
+		p.kill();		
 	}
 	
 	private function playerBulletTilemapColision(tile:FlxTilemap, bullet:Balas):Void
@@ -121,9 +146,8 @@ class PlayState extends FlxState
 	}
 	
 	private function playerBulletEnemy(b: Balas, e:FlxSprite)
-	{
-		trace(e.x);
-		var cajita = new Cajita(500, 50,AssetPaths.Cajita__png);
+	{		
+		var cajita = new Cajita(e.x + 5, e.y + 5,AssetPaths.cajita__png);
 		b.kill();
 		e.kill();
 		add(cajita);
