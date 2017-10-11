@@ -12,6 +12,7 @@ class Player extends FlxSprite
 {
 	private var speed:Int;
 	public var bullet:Balas;
+	public var bouncy:BubbleBullet;
 	private var shootDelay:Float = 0;
 	private var delay:Float;
 	public var dead:Bool = false;
@@ -34,15 +35,8 @@ class Player extends FlxSprite
 		movement();
 		shootDelay += elapsed;
 		shoot();
+		shootBubbleBullet();
 		checkBorders();
-	}
-	
-	public function death():Void
-	{
-		if (Global.lives <= 0)
-		{
-			dead = true;
-		}
 	}
 	
 	public function checkBorders():Void
@@ -67,6 +61,21 @@ class Player extends FlxSprite
 			velocity.y += speed;
 		if (FlxG.keys.pressed.UP)
 			velocity.y -= speed;	
+	}
+	
+	/* Esto debia ser un ataque de los enemigos, pero no logro que al ser balas de ellos, estas colisionen con el tilemap
+	 * La bala gracias a la propiedad de "elasticity", rebota con el ambiente.
+	 * Pero ahora no logro ni que funcione la velocidad en x,y.
+	 */
+	public function shootBubbleBullet():Void
+	{
+		if (FlxG.keys.justPressed.X)
+		{
+			bouncy = new BubbleBullet(x, y);
+			FlxG.state.add(bouncy);
+			bouncy.velocity.x = 200;	
+			bouncy.velocity.y = 200;
+		}
 	}
 	
 	public function shoot():Void

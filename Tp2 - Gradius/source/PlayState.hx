@@ -26,6 +26,8 @@ class PlayState extends FlxState
 	private var cajita:Cajita;
 	var camVelocityX:Float;
 	var guia:FlxSprite;
+	private var bullet:Balas;
+	private var enemyShootTimer:Float = 0;
 	
 	
 	override public function create():Void
@@ -34,6 +36,7 @@ class PlayState extends FlxState
 		
 		FlxG.worldBounds.width = 5120;
 		FlxG.worldBounds.height = 240;
+
 		
 		arrayLives = new FlxTypedGroup<FlxSprite>();
 		//Global.lives = 3;
@@ -122,6 +125,7 @@ class PlayState extends FlxState
 				respawnDelay = 0;
 			}
 		}
+		
 	}
 	
 	private function colisiones():Void
@@ -130,6 +134,7 @@ class PlayState extends FlxState
 		FlxG.collide(allEnemiesGroup, player, playerEnemyColision);
 		FlxG.collide(tilemap, player.bullet, playerBulletTilemapColision);
 		FlxG.collide(allEnemiesGroup, player.bullet, playerBulletEnemy);
+		FlxG.collide(tilemap, player.bouncy, playerBubbleBullet);
 		FlxG.collide(cajita, player, playerCajitaColision);
 	}
 	
@@ -137,6 +142,13 @@ class PlayState extends FlxState
 	{
 		trace("culo");
 		p.kill();		
+		FlxG.collide(player, bullet, playerBulletEnemy);
+		FlxG.collide(player, bullet, playerEnemyBulletColision);
+	}
+	
+	private function playerBubbleBullet(tile:FlxTilemap, bullet:BubbleBullet)
+	{
+		
 	}
 	
 	private function playerBulletTilemapColision(tile:FlxTilemap, bullet:Balas):Void
@@ -145,9 +157,25 @@ class PlayState extends FlxState
 			bullet.kill();
 	}
 	
+	// No pudimos lograr que las "cajas", para activar las upgrades colisionaran con el jugador.
+	/*
 	private function playerBulletEnemy(b: Balas, e:FlxSprite)
 	{		
 		var cajita = new Cajita(e.x + 5, e.y + 5,AssetPaths.cajita__png);
+	}
+	*/
+	
+	//No logramos averiguar como llamr a la bala en especifico que lanza cada enemigo, por ende, no logramos que colisionen con el Player.
+	private function playerEnemyBulletColision(p:FlxSprite, b:FlxSprite):Void
+	{
+		p.kill();
+		b.kill();
+	}
+	
+	private function playerBulletEnemy(b:Balas, e:FlxSprite)
+	{
+		trace(e.x);
+		var cajita = new Cajita(e.x, e.y,AssetPaths.cajita__png);
 		b.kill();
 		e.kill();
 		add(cajita);
@@ -188,10 +216,5 @@ class PlayState extends FlxState
 			case "Boss":
                 var boss = new Boss(X, Y, AssetPaths.Boss__png);               
 		}
-	}
-	
-	private function enemyMovement_1():Void
-	{
-		
 	}
 }

@@ -14,6 +14,7 @@ class Cajita extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(5, 5, 0xffffffff);
+		makeGraphic(10, 10, 0xffffffff);
 		
 	}
 	

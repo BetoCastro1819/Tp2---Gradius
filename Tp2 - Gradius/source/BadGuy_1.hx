@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.input.FlxAccelerometer;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 
 /**
@@ -11,11 +12,11 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
 class BadGuy_1 extends FlxSprite 
 {
 	var timer:Float = 0;
+	var shootTimer:Float = 0;
 	var bullet:Balas;
-	var shootDelay:Float = 0;
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
-		super(X, Y, SimpleGraphic);
+		super(X, Y, AssetPaths.nave_enemiga1__png);
 	}
 	
 	override public function update(elapsed:Float):Void
@@ -23,11 +24,11 @@ class BadGuy_1 extends FlxSprite
 		if (x < FlxG.camera.scroll.x + FlxG.camera.width)
 		{
 			BadGuy_1Movement();
-			shootDelay += elapsed;
-			if (shootDelay > 0.1)
+			shootTimer += elapsed;
+			if (shootTimer > 0.3)
 			{
-				shoot();
-				shootDelay = 0;
+				enemyShoot();
+				shootTimer = 0;
 			}
 		}
 	}
@@ -57,9 +58,9 @@ class BadGuy_1 extends FlxSprite
         }
     }
 	
-	public function shoot():Void
+	public function enemyShoot()
 	{
-		bullet = new Balas(x + width/2, y + height / 2);
+		bullet = new Balas(x + width - 3, y + height / 2 - 2);
 		FlxG.state.add(bullet);
 		bullet.velocity.x = -200;
 	}

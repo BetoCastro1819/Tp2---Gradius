@@ -12,9 +12,11 @@ class BadGuy_2 extends FlxSprite
 {
 	
 	var timer:Float = 0;
-	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
+
+	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset)
 	{
 		super(X, Y, SimpleGraphic);
+
 	}
 	
 	override public function update(elapsed:Float):Void

@@ -12,7 +12,8 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
 class BadGuy_3 extends FlxSprite 
 {
 	var timer:Float = 0;
-	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
+	var shootTimer:Float = 0;
+	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset)
 	{
 		super(X, Y, SimpleGraphic);
 	}
