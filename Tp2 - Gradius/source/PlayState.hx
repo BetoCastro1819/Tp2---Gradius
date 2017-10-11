@@ -22,6 +22,7 @@ class PlayState extends FlxState
 	private var spriteLife:FlxSprite;
 	private var respawnDelay:Float = 0;
 	private var boss:Boss;
+	private var cajita:Cajita;
 	var camVelocityX:Float;
 	var guia:FlxSprite;
 	
@@ -44,7 +45,7 @@ class PlayState extends FlxState
 		}
 		
 		boss = new Boss();
-		
+		cajita = new Cajita();
 		allEnemiesGroup = new FlxGroup();
 		enemyGroup1 = new FlxTypedGroup<BadGuy_1>();
 		enemyGroup2 = new FlxTypedGroup<BadGuy_2>();
@@ -63,15 +64,14 @@ class PlayState extends FlxState
 		allEnemiesGroup.add(enemyGroup1);
 		allEnemiesGroup.add(enemyGroup2);
 		allEnemiesGroup.add(enemyGroup3);		
+		cajita.makeGraphic(2, 2, 0xff000000);
 		
 		var background:FlxBackdrop = new FlxBackdrop(AssetPaths.Fondo__png);
 		
 		guia = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		guia.makeGraphic(1, 1, 0x00000000);
 		guia.velocity.x = Reg.camVelocityX;		
-		FlxG.camera.follow(guia);
-		
-		
+		FlxG.camera.follow(guia);		
 		
 		add(guia);
 		add(background);
@@ -79,8 +79,7 @@ class PlayState extends FlxState
 		add(player);
 		add(allEnemiesGroup);
 		add(arrayLives);
-		add(boss);
-		
+		add(boss);	
 		
 	}
 
@@ -123,8 +122,11 @@ class PlayState extends FlxState
 	
 	private function playerBulletEnemy(b: Balas, e:FlxSprite)
 	{
+		trace(e.x);
+		var cajita = new Cajita(500, 50,AssetPaths.Cajita__png);
 		b.kill();
 		e.kill();
+		add(cajita);
 	}
 	
 	private function playerEnemyColision(e:FlxSprite, p:Player):Void
@@ -160,8 +162,7 @@ class PlayState extends FlxState
 				var badGuy_3 = new BadGuy_3(X, Y, AssetPaths.nave_enemiga3__png);
 				enemyGroup3.add(badGuy_3);
 			case "Boss":
-                var boss = new Boss(X, Y, AssetPaths.Boss__png);
-                add(boss);
+                var boss = new Boss(X, Y, AssetPaths.Boss__png);               
 		}
 	}
 	
@@ -170,6 +171,3 @@ class PlayState extends FlxState
 		
 	}
 }
-/*Beto: el nivel de ogmo son 20 pantallas (5120 x 240)
-la barra negra de abajo de todo es aproposito, es para tener donde poner el score, las vidas, etclass. (En le gradius original esta hecho asi)
-*/

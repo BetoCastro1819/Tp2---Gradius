@@ -22,10 +22,16 @@ class AssetData {
 			type.set ("assets/data/GradiusOld.oel", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/images/Boss.png", "assets/images/Boss.png");
 			type.set ("assets/images/Boss.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/BubbleBullet.png", "assets/images/BubbleBullet.png");
+			type.set ("assets/images/BubbleBullet.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/images/cajita.png", "assets/images/cajita.png");
+			type.set ("assets/images/cajita.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/Fondo.png", "assets/images/Fondo.png");
 			type.set ("assets/images/Fondo.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 			type.set ("assets/images/images-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/images/missile.png", "assets/images/missile.png");
+			type.set ("assets/images/missile.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/nave.png", "assets/images/nave.png");
 			type.set ("assets/images/nave.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/images/nave_enemiga1.png", "assets/images/nave_enemiga1.png");
